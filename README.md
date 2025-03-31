@@ -79,15 +79,15 @@ Le notebook se structure en plusieurs parties clés :
     - **Optimisation** via l'algorithme Adam, avec mise à jour itérative des paramètres du réseau.
     - **Affichage périodique** de la loss et visualisation de la solution pour suivre l'évolution de l'entraînement.
     
-    ![Training loss itération n°1](image.png)
+    ![Training loss itération n°1](images/image.png)
     
     Training loss itération n°1
     
-    ![Training loss itération n°25](image%201.png)
+    ![Training loss itération n°25](images/image%201.png)
     
     Training loss itération n°25
     
-    ![Training loss itération n°200](image%202.png)
+    ![Training loss itération n°200](images/image%202.png)
     
     Training loss itération n°200
     
@@ -126,7 +126,7 @@ L'entraînement du modèle se déroule par itérations successives, au cours des
 > L’évolution de la loss est représenté ci-dessous
 > 
 > 
-> ![images/image.png](image%203.png)
+> ![images/image.png](images/image%203.png)
 > 
 
 - **Backpropagation et mise à jour des poids** : Le calcul des gradients est effectué par rétropropagation, suivie de la mise à jour itérative des paramètres via Adam. La convergence du modèle est contrôlée par l'affichage périodique de la loss.
@@ -135,7 +135,7 @@ L'entraînement du modèle se déroule par itérations successives, au cours des
 
 On peut afficher l’évolution au cours des epochs des différents termes de loss afin de mieux saisir les différentes conditions que doit respecter le réseau. On travail dans cet exemple sur des conditions aux limites plus complexes que précédemment afin d’obtenir un profil de température plus intéressant.
 
-![image.png](image%204.png)
+![image.png](images/image%204.png)
 
 > **Remarque** : On constate que le terme le plus important de la loss est le terme de condition aux limites. Le réseau semble n’avoir aucun mal à trouver des données qui vérifient l’équation de la chaleur (terme PDE faible) mais c’est l’ajout des conditions initiales et limites qui va demander au réseau plus d’entraînement avant de converger. Ici chaque terme de loss a le même poids dans la loss total mais il est possible d’y ajouter une pondération.
 > 
@@ -187,11 +187,11 @@ def bc(self,x,y,t):
 
 Après entrainement on observe le profil de température suivant :
 
-![Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)](image%205.png)
+![Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)](images/image%205.png)
 
 Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)
 
-![Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)](40f4e996-8143-4598-a0fb-9dd074f796a4.png)
+![Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)](images/40f4e996-8143-4598-a0fb-9dd074f796a4.png)
 
 Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1)
 
@@ -201,15 +201,15 @@ On constate que la température initiale n’est pas parfaitement nulle, en part
 loss = mse_f + 2*mse_ic + mse_bc
 ```
 
-![Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI](image%206.png)
+![Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI](images/image%206.png)
 
 Profil de température à $t=0$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI
 
-![Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI](image%207.png)
+![Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI](images/image%207.png)
 
 Profil de température à $t=0.99$ pour des conditions initiales nulles et des conditions au bord exponentielles (sur les plans x=0 et x=1) et pondération sur CI
 
-![Evolution de la loss après ajout d’un terme de pondération sur le respect des conditions initiales](image%208.png)
+![Evolution de la loss après ajout d’un terme de pondération sur le respect des conditions initiales](images/image%208.png)
 
 Evolution de la loss après ajout d’un terme de pondération sur le respect des conditions initiales
 
@@ -226,11 +226,11 @@ Plusieurs pistes peuvent être explorées pour améliorer le modèle :
     
     Une autre piste d’amélioration pourrait être d’utiliser un Neural ODE pour simuler ce genre de problème physique. Les neural ODE ont été introduit dans [ce papier](https://arxiv.org/abs/1806.07366) et semble plus adapté à la modélisation d’équations différentielles, la où un MLP classique peut peiner à modéliser des comportement continus du fait de leur discrétisation régulière
     
-    ![suivi d’une trajectoire complexe par (a) un RNN classique et (b) un neural ODE avec des points de sampling irrégulier sur les trajectoires (figure 8 de Neural Ordinary Differential Equations)](image%209.png)
+    ![suivi d’une trajectoire complexe par (a) un RNN classique et (b) un neural ODE avec des points de sampling irrégulier sur les trajectoires (figure 8 de Neural Ordinary Differential Equations)](images/image%209.png)
     
     suivi d’une trajectoire complexe par (a) un RNN classique et (b) un neural ODE avec des points de sampling irrégulier sur les trajectoires (figure 8 de Neural Ordinary Differential Equations)
     
-    ![Gauche : Un RNN définit une séquence de transformation finie et régulière. Droite : Un réseau ODE définit un champ de vecteur qui transforme de manière plus continue l’état du système. Les cercles représentent l’évaluation en différents points (figure 1 de Neural Ordinary Differential Equations)](image%2010.png)
+    ![Gauche : Un RNN définit une séquence de transformation finie et régulière. Droite : Un réseau ODE définit un champ de vecteur qui transforme de manière plus continue l’état du système. Les cercles représentent l’évaluation en différents points (figure 1 de Neural Ordinary Differential Equations)](images/image%2010.png)
     
     Gauche : Un RNN définit une séquence de transformation finie et régulière. Droite : Un réseau ODE définit un champ de vecteur qui transforme de manière plus continue l’état du système. Les cercles représentent l’évaluation en différents points (figure 1 de Neural Ordinary Differential Equations)
     
