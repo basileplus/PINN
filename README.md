@@ -1,4 +1,4 @@
-# CR_PINNS
+# PINNS
 
 # Présentation Complète d'une Approche par PINN pour la Résolution du Problème de Transfert de Chaleur
 
