@@ -19,9 +19,7 @@ Dans le présent notebook, le problème étudié est celui du transfert de chale
 Le problème de transfert de chaleur considéré s'exprime par une équation différentielle partielle (EDP) dont la formulation générale est la suivante :
 
 $$
-
-c\, \frac{\partial u}{\partial t} - \nabla \cdot \left( k \nabla u \right) + \beta (u - u_{\text{ref}}) = q(x,t)
-
+\frac{\partial u}{\partial t} - \nabla \cdot \left( k \nabla u \right) + \beta (u - u_{\text{ref}}) = q(x,t)
 $$
 
 Dans ce TP, plusieurs simplifications ont été opérées afin de concentrer l'étude sur la mise en œuvre d'un PINN :
@@ -157,7 +155,6 @@ L'extension d'un PINN d'un problème 1D à un problème en deux dimensions repr�
         
         $$
         \nabla \cdot (k \nabla u) = \frac{\partial}{\partial x}\left(k\, \frac{\partial u}{\partial x}\right) + \frac{\partial}{\partial y}\left(k\, \frac{\partial u}{\partial y}\right)
-        
         $$
         
     - Les conditions aux limites devront être spécifiées pour les bords du domaine en $x$ et en $y$.
@@ -229,10 +226,6 @@ Plusieurs pistes peuvent être explorées pour améliorer le modèle :
     ![suivi d’une trajectoire complexe par (a) un RNN classique et (b) un neural ODE avec des points de sampling irrégulier sur les trajectoires (figure 8 de Neural Ordinary Differential Equations)](images/image%209.png)
     
     suivi d’une trajectoire complexe par (a) un RNN classique et (b) un neural ODE avec des points de sampling irrégulier sur les trajectoires (figure 8 de Neural Ordinary Differential Equations)
-    
-    ![Gauche : Un RNN définit une séquence de transformation finie et régulière. Droite : Un réseau ODE définit un champ de vecteur qui transforme de manière plus continue l’état du système. Les cercles représentent l’évaluation en différents points (figure 1 de Neural Ordinary Differential Equations)](images/image%2010.png)
-    
-    Gauche : Un RNN définit une séquence de transformation finie et régulière. Droite : Un réseau ODE définit un champ de vecteur qui transforme de manière plus continue l’état du système. Les cercles représentent l’évaluation en différents points (figure 1 de Neural Ordinary Differential Equations)
     
 
 ---
